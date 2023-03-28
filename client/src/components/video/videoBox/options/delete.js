@@ -25,7 +25,7 @@ const Delete = ({ setDiscard, videoId, videoBox, setCount }) => {
 
   async function deleteVideo() {
     setLoading(true);
-    const deleteResult = await deletevideo({ videoId });
+    const deleteResult = await deletevideo(videoId);
     if (deleteResult.pass) {
       setCount(x => x - 1);
       videoBox.current.classList.add('hide');

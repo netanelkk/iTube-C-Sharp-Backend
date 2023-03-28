@@ -3,7 +3,6 @@ import { fetchComments, deletecomment } from "../../../../api";
 import ReactTimeAgo from 'react-time-ago';
 import { Link } from "react-router-dom";
 import { contentWithTags } from './add';
-import { MAX_PER_REQUEST } from './';
 
 function commentLoading() {
     return (<><div className="loading" id="comment-loading"></div></>);

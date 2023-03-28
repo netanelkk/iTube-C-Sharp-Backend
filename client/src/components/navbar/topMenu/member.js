@@ -77,25 +77,33 @@ const Member = ({ onLogout, isUserSignedIn, setOpenLogin, refreshBar }) => {
 
                         {showMenu &&
                             <ul className='user-menu'>
-                                <Link to={window.PATH + "/upload"} onClick={() => { setShowMenu(false); }}>
+                                <Link to={window.PATH + "/upload"}
+                                    onClick={() => { setShowMenu(false); }}>
                                     <li>
                                         <i className="bi bi-upload"></i>
                                         Upload Video
                                     </li>
                                 </Link>
-                                <Link to={window.PATH + "/channel/" + channelId} onClick={() => { setShowMenu(false); }}>
+                                <Link to={window.PATH + "/channel/" + channelId}
+                                    onClick={() => { setShowMenu(false); }}>
                                     <li>
                                         <i className="bi bi-tv"></i>
                                         My Channel
                                     </li>
                                 </Link>
-                                <Link to={window.PATH + "/settings"} onClick={() => { setShowMenu(false); }}>
+                                <Link to={window.PATH + "/settings"}
+                                    onClick={() => { setShowMenu(false); }}>
                                     <li>
                                         <i className="bi bi-gear"></i>
                                         Settings
                                     </li>
                                 </Link>
-                                <Link to={window.PATH + "/#logout"} onClick={(e) => { e.preventDefault(); setShowMenu(false); onLogout(); }}>
+                                <Link to={window.PATH + "/#logout"}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setShowMenu(false);
+                                        onLogout();
+                                    }}>
                                     <li>
                                         <i className="bi bi-box-arrow-right"></i>
                                         Logout

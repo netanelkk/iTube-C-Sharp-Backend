@@ -1,4 +1,3 @@
-import React from 'react';
 import axios from 'axios';
 
 // Token for registered users
@@ -11,7 +10,7 @@ async function request(url, data, requestMethod="POST") {
     headers: { "Content-Type": "application/json" }
   };
 
-  if(requestMethod == "POST") {
+  if(requestMethod === "POST" || requestMethod === "PUT") {
     request.body = JSON.stringify(data);
   }
 
@@ -130,23 +129,23 @@ export async function mydetails() {
 }
 
 export async function updatedetails({ email, newPassword, password }) {
-  return await request(API_URL+"/channel/details", { email, newPassword, password });
+  return await request(API_URL+"/channel/details", { email, newPassword, password }, "PUT");
 }
 
 export async function updatetitle({ videoId, title }) {
-  return await request(API_URL+"/watch/updatetitle/"+videoId, { title });
+  return await request(API_URL+"/watch/updatetitle/"+videoId, { title }, "PUT");
 }
 
 export async function updateprivate({ videoId, password, privateChecked }) {
-  return await request(API_URL+"/watch/updateprivate/"+videoId, { password, privateChecked });
+  return await request(API_URL+"/watch/updateprivate/"+videoId, { password, privateChecked }, "PUT");
 }
 
-export async function deletevideo({ videoId }) {
-  return await request(API_URL+"/watch/delete", { videoId });
+export async function deletevideo(videoId) {
+  return await request(API_URL+"/watch/delete/"+videoId, "", "DELETE");
 }
 
 export async function deletecomment(commentId) {
-  return await request(API_URL+"/watch/commentdelete", { commentId }); 
+  return await request(API_URL+"/watch/commentdelete/"+commentId, "", "DELETE"); 
 }
 
 export async function userSearch(username) {
@@ -162,7 +161,7 @@ export async function channelSubscriptions(id, page) {
 }
 
 export async function updateprofile(about) {
-  return await request(API_URL+"/channel/updateprofile", {about});
+  return await request(API_URL+"/channel/updateprofile", {about}, "PUT");
 }
 
 export async function totalviews(userId) {

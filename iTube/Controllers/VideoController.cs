@@ -216,14 +216,7 @@ namespace iTube.Controllers
             return Ok(new RespondData<FetchVideoRow>(videos));
         }
 
-        /*
-         *
-        */
-        // TODO: all post with update > switch to update request
-        /*
-         *
-         */
-        [HttpPost]
+        [HttpPut]
         [Route("api/watch/updatetitle/{videoId}")]
         // Update video title
         public IHttpActionResult UpdateDetails([FromBody] Title title, [FromUri] int videoId)
@@ -241,9 +234,9 @@ namespace iTube.Controllers
             return BadRequest("Request Error");
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("api/watch/updateprivate/{videoId}")]
-        // Update video title
+        // Updates video's visibily (private/public)
         public IHttpActionResult UpdatePrivate([FromBody] UpdateTitleRequest ut, [FromUri] int videoId)
         {
             var header = Request.Headers.Authorization;
@@ -262,16 +255,16 @@ namespace iTube.Controllers
             return BadRequest("Request Error");
         }
 
-        [HttpPost]
-        [Route("api/watch/delete")]
+        [HttpDelete]
+        [Route("api/watch/delete/{videoId}")]
         // Delete video
-        public IHttpActionResult DeleteVideo([FromBody] VideoId videoId)
+        public IHttpActionResult DeleteVideo(int videoId)
         {
             var header = Request.Headers.Authorization;
             if (header != null)
             {
                 int userId = Models.User.Base64De(header.Parameter);
-                if (!Video.DeleteVideo(videoId.GetVideoId(), userId))
+                if (!Video.DeleteVideo(videoId, userId))
                 {
                     return BadRequest("Delete failed");
                 }
@@ -280,16 +273,16 @@ namespace iTube.Controllers
             return BadRequest("Request Error");
         }
 
-        [HttpPost]
-        [Route("api/watch/commentdelete")]
+        [HttpDelete]
+        [Route("api/watch/commentdelete/{commentId}")]
         // Delete comment
-        public IHttpActionResult DeleteComment([FromBody] CommentId commentId)
+        public IHttpActionResult DeleteComment(int commentId)
         {
             var header = Request.Headers.Authorization;
             if (header != null)
             {
                 int userId = Models.User.Base64De(header.Parameter);
-                if (!Comment.DeleteComment(commentId.GetCommentId(), userId))
+                if (!Comment.DeleteComment(commentId, userId))
                 {
                     return BadRequest("Delete failed");
                 }

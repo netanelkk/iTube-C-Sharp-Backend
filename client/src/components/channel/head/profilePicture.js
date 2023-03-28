@@ -51,7 +51,11 @@ const ProfilePicture = ({ picturePath, userId, setRefreshBar }) => {
     }
     setPickerLabel("0%");
 
-    const formData = { file: e.target.files[0], fileName: e.target.files[0].name };
+    const formData = {
+      file: e.target.files[0],
+      fileName: e.target.files[0].name
+    };
+    
     const res = await upload("/channel/picture", formData, config);
     if (res.pass) {
       uploadFinish();
@@ -80,7 +84,7 @@ const ProfilePicture = ({ picturePath, userId, setRefreshBar }) => {
           accept="image/png, image/gif, image/jpeg, image/webp"
           ref={inputFile}
           onChange={uploadPicture} />
-          
+
       </div>
     </div>
   );

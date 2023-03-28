@@ -123,7 +123,7 @@ namespace iTube.Controllers
             return Ok(new RespondSingleData<RespondChannel>(channel));
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("api/channel/details")]
         // Update user's details
         public IHttpActionResult UpdateDetails(UpdateDetailsRequest ud)
@@ -173,7 +173,7 @@ namespace iTube.Controllers
             return Ok(new RespondData<RespondSubscriptions>(subscriptions));
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("api/channel/updateprofile")]
         // Update profile details
         public IHttpActionResult UpdateProfile(About about)

@@ -392,7 +392,6 @@
     </Compile>
     <Compile Include="Models\About.cs" />
     <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\CommentId.cs" />
     <Compile Include="Models\Content.cs" />
     <Compile Include="Models\DAL\DataServices.cs" />
     <Compile Include="Models\FetchComment.cs" />

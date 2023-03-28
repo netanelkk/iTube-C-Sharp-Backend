@@ -42,13 +42,11 @@ const HistoryResult = ({ isUserSignedIn }) => {
     const loadVideos = async () => {
       setLoading(true);
       const d = await fetchHistory(page);
-      if (!d.pass) {
-        setLoading(false);
-      } else {
+      if (d.pass) {
         setCount(d.Count);
         setData((data) => [...data, ...d.Data]);
-        setLoading(false);
       }
+      setLoading(false);
     }
     loadVideos();
   }, [page]);

@@ -4,6 +4,9 @@ import { fetchNewVideos, fetchPopular } from "../../api";
 import VideoBox from "../video/videoBox";
 import { PCVideoRow } from "../placeholderComponents/homepage"
 
+/*
+  Fetching the most liked videos in the past month
+*/
 const Popular = () => {
   const getPopular = async () => {
     const d = await fetchPopular();
