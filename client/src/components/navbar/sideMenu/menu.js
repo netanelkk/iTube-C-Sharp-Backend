@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Menu({ updateActive }) {
   const path = window.location.pathname.replace(window.PATH,'').split("/")[1];
-  
+
   return (
     <>
       <ul className="menu-list">
